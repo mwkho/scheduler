@@ -35,7 +35,6 @@ import DayList from 'components/DayList';
 // .add("Clickable", () => (
 //   <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
 // ));
-
 const days = [
   {
     id: 1,
