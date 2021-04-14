@@ -143,6 +143,22 @@ storiesOf("InterviewerListItem", module)
     })
     .add("Appointment", () => <Appointment />)
     .add("Appointment with Time", () => <Appointment time="12pm" />)
+    .add("Appointment Empty", () => (
+      <>
+        <Appointment id={1} time="12pm" />
+        <Appointment id="last" time="1pm" />
+      </>
+    ))    
+    .add("Appointment Booked", () => (
+      <>
+        <Appointment
+          id={1}
+          time="12pm"
+          interview={{ student: "Lydia Miller-Jones", interviewer }}
+        />
+        <Appointment id="last" time="1pm" />
+      </>
+    ))    
     .add('Header', () => <Header time="12pm"/>)
     .add('Empty', () => <Empty onAdd={action('onAdd')}/>)
     .add('Show Unhover', () => <Show name={'Lydia Miller-Jones'} interviewer={interviewer}/>)
