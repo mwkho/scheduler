@@ -14,6 +14,7 @@ import Appointment from 'components/Appointment/';
 import Header from 'components/Appointment/Header';
 import Empty from 'components/Appointment/Empty';
 import Show from 'components/Appointment/Show';
+import Confirm from 'components/Appointment/Confirm';
 
 // storiesOf("Button", module)
 //   .addParameters({
@@ -143,7 +144,7 @@ storiesOf("InterviewerListItem", module)
     .add('Empty', () => <Empty onAdd={action('onAdd')}/>)
     .add('Show Unhover', () => <Show name={'Lydia Miller-Jones'} interviewer={interviewer}/>)
     .add('Show Hover', () => <Show name={'Lydia Miller-Jones'} interviewer={interviewer} onEdit={action('onEdit')} onDelete={action('onDelete')}/>)
-    
+    .add('Confirm', () => <Confirm message='Delete this appointment' onConfirm={action('onConfirm')} onCancel={action('onCancel')}/>)
   
 
   
