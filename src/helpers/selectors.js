@@ -5,7 +5,7 @@ const getAppointmentsForDay = (state, day) => {
   if (!filterAppointments) {
     return [];
   }
-  
+
   filterAppointments.appointments.forEach((id) => {
     selectedAppointments.push(state.appointments[id])
   });
@@ -13,4 +13,14 @@ const getAppointmentsForDay = (state, day) => {
   return selectedAppointments;
 }
 
-export default getAppointmentsForDay;
+const getInterview = (state, interview) => {
+  if (!interview) {
+    return null;
+  }
+
+  const interviewerInfo =state.interviewers[interview.interviewer];
+  
+  console.log(interviewerInfo)
+  return {interviewer: interviewerInfo, student: interview.student};
+}
+module.exports ={getAppointmentsForDay, getInterview};
