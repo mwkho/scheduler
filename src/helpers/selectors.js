@@ -20,7 +20,6 @@ const getInterview = (state, interview) => {
 
   const interviewerInfo =state.interviewers[interview.interviewer];
   
-  console.log(interviewerInfo)
   return {interviewer: interviewerInfo, student: interview.student};
 }
 module.exports ={getAppointmentsForDay, getInterview};
