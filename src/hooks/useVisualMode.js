@@ -14,7 +14,7 @@ const useVisualMode = (initial) => {
   }
 
   const back = () => {
-    if (history.length == 1){
+    if (history.length === 1){
       setMode(history[0]);
     }
     if (history.length > 1) { 

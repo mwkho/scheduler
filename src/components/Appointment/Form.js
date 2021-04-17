@@ -17,7 +17,7 @@ const Form = (props) => {
   }
 
   const save = () => {
-    props.onSave(name,interviewer);
+    props.onSave(name, interviewer);
   }
   
   return (
@@ -31,9 +31,6 @@ const Form = (props) => {
             placeholder="Enter Student Name"
             value={name}
             onChange = {(event) => {setName(event.target.value)}}
-            /*
-              This must be a controlled component
-            */
           />
         </form>
         <InterviewerList interviewers={props.interviewers} interviewer={interviewer} setInterviewer={setInterviewer} />

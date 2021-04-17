@@ -25,21 +25,37 @@ export default function Application(props) {
     ])
     .then((responses) => {
       setState(prev => ({...prev, days: responses[0].data, appointments: responses[1].data, interviewers: responses[2].data}))
-      console.log(state)
     })
     .catch((err) => {
       console.log(err.response)
     })
   }, []);
 
+  const bookInterview = (id, interview) => {
+    console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    setState({...state, appointments})
+    
+  };
+
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
   const schedule = dailyAppointments.map((appointment) => {
-  const interview = getInterview(state, appointment.interview);
-  return(
-    <Appointment key={appointment.id} id={appointment.id} time={appointment.time} interview={interview} interviewers={dailyInterviewers} />
-  )
+    const interview = getInterview(state, appointment.interview);
+    return(
+      <Appointment key={appointment.id} id={appointment.id} time={appointment.time} interview={interview} interviewers={dailyInterviewers} bookInterview={bookInterview} />
+    )
   });
+
+ 
 
   return (
     <main className="layout">
@@ -65,7 +81,7 @@ export default function Application(props) {
     </section>
     <section className="schedule">
       {schedule}
-      <Appointment key="last" time="5pm" />
+      <Appointment key="last" time="5pm" bookInterview={bookInterview} />
     </section>
   </main>
   );
