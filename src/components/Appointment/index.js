@@ -24,7 +24,7 @@ const Appointment = (props) => {
       student: name, 
       interviewer: interviewer
     };
-    transition(SAVING);
+    // transition(SAVING);
     props.bookInterview(props.id, interview)
     // transition(SHOW);
   };
@@ -35,7 +35,7 @@ const Appointment = (props) => {
       {mode === EMPTY  && <Empty onAdd={() => transition(CREATE)} /> }
       {mode === SHOW  && <Show name={props.interview.student} interviewer={props.interview.interviewer} onEdit={() => {console.log('clicked onEdit')}} onDelete={() => {console.log('clicked onDelete')}}/>}
       {mode === CREATE && <Form interviewers={props.interviewers} onSave={save} onCancel={back} />}
-      {mode === SAVING && <Status message='Saving...'/>}
+      {/* {mode === SAVING && <Status message='Saving...'/>} */}
     </article>
   );
 };

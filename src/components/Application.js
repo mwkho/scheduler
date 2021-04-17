@@ -41,17 +41,12 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    if (interview){
-      axios.put(`http://localhost:8001/api/appointments/${id}`, appointment.interview)
-      .then(() => {
-        setState({...state, appointments});
-      });
-    }
-
-  };
-
-  const cancelInterview = (id) =>  {
-
+    
+    axios.put(`http://localhost:8001/api/appointments/${id}`, appointment.interview)
+    .then(() => {
+      setState({...state, appointments});
+    });
+    
 
   };
 
@@ -60,7 +55,7 @@ export default function Application(props) {
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     return(
-      <Appointment key={appointment.id} id={appointment.id} time={appointment.time} interview={interview} interviewers={dailyInterviewers} bookInterview={bookInterview} cancelInterview={cancelInterview} />
+      <Appointment key={appointment.id} id={appointment.id} time={appointment.time} interview={interview} interviewers={dailyInterviewers} bookInterview={bookInterview} />
     )
   });
 
