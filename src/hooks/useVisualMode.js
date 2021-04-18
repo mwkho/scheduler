@@ -8,7 +8,7 @@ const useVisualMode = (initial) => {
     setMode(second);
     // assuming we want to go straight to the initial state
     if (replace) { 
-      setHistory(prev => [prev[0]])
+      setHistory(prev => prev.slice(0, prev.length - 1))
     }
     setHistory(prev => [...prev, second]);
   }
