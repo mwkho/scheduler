@@ -1,3 +1,5 @@
+import { useState, useEffect} from "react";
+
 const axios = require('axios');
 
 const useApplicationData = () => {
@@ -38,13 +40,22 @@ const useApplicationData = () => {
     };
     return axios.put(`http://localhost:8001/api/appointments/${id}`, {...interview})
       .then(() => {
-        setState({...state, appointments});
-      });
+        return axios.get(' http://localhost:8001/api/days');
+      })
+      .then((response) => {
+        setState(prev => ({...prev, days:response}))
+      })
   };
 
 
   const cancelInterview = (id) =>  {
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
+    .then(() => {
+      return axios.get('http://localhost:8001/api/days');
+    })
+    .then((response) => {
+      setState(prev => ({...prev, days:response.data}))
+    })
   };
 
 
