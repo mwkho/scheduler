@@ -1,19 +1,13 @@
-import React, { useState, useEffect} from "react";
+import React from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
-import Appointment from './Appointment/'
+import Appointment from './Appointment/';
+import useApplicationData from '../hooks/useApplicationData';
 const {getAppointmentsForDay, getInterview, getInterviewersForDay} = require("helpers/selectors");
 
-const axios = require('axios');
-
 export default function Application(props) {
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers:{}
-  });
   
+<<<<<<< HEAD
   const setDay = day => setState({ ...state, day });
 
   useEffect(() => {
@@ -50,6 +44,10 @@ export default function Application(props) {
 
   };
 
+=======
+  const {state, setDay, bookInterview, cancelInterview} = useApplicationData()
+  
+>>>>>>> appointments
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
   const schedule = dailyAppointments.map((appointment) => {
@@ -59,7 +57,6 @@ export default function Application(props) {
     )
   });
 
- 
 
   return (
     <main className="layout">
