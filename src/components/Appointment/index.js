@@ -57,15 +57,11 @@ const Appointment = (props) => {
       {mode === SHOW  && <Show name={props.interview.student} interviewer={props.interview.interviewer} onEdit={() => {transition(EDIT)}} onDelete={() => transition(CONFIRM)}/>}
       {mode === EDIT && <Form name={props.interview.student} interviewer={props.interview.interviewer.id} interviewers={props.interviewers} onSave={save} onCancel={back} />}
       {mode === CREATE && <Form interviewers={props.interviewers} onSave={save} onCancel={back} />}
-<<<<<<< HEAD
-      {/* {mode === SAVING && <Status message='Saving...'/>} */}
-=======
       {mode === SAVING && <Status message={'Saving...'}/>}
       {mode === DELETE && <Status message={'Deleting...'}/>}
       {mode === CONFIRM && <Confirm onCancel={back} onConfirm={deleteInterview} message={'Do you want to cancel the interview?'}/>}
       {mode === ERROR_SAVE && <Error message='There was an error saving your changes.' onClose={back}/>}
       {mode === ERROR_DELETE && <Error message='There was an error deleting your interview.' onClose={back}/>}
->>>>>>> appointments
     </article>
   );
 };
