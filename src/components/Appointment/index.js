@@ -34,10 +34,10 @@ const Appointment = (props) => {
     transition(SAVING);
     props.bookInterview(props.id, interview)
     .then(() => {
-      // transition(SHOW)
+      transition(SHOW)
     })
     .catch((error) => {
-      // transition(ERROR_SAVE, true)
+      transition(ERROR_SAVE, true)
     })
   };
 

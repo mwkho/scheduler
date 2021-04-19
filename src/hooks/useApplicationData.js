@@ -38,12 +38,13 @@ const useApplicationData = () => {
       ...state.appointments,
       [id]: appointment
     };
-    return axios.put(`http://localhost:8001/api/appointments/${id}`, {...interview})
+    return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview})
       .then(() => {
+        setState({...state, appointments})
         return axios.get(' http://localhost:8001/api/days');
       })
       .then((response) => {
-        setState(prev => ({...prev, days:response}))
+        setState(prev => ({...prev, days:response.data}))
       })
   };
 
