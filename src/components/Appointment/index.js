@@ -31,7 +31,7 @@ const Appointment = (props) => {
       student: name, 
       interviewer: interviewer
     };
-    // transition(SAVING);
+    transition(SAVING);
     props.bookInterview(props.id, interview)
     .then(() => {
       transition(SHOW)
