@@ -14,7 +14,8 @@ const getInterview = (state, interview) => {
   if (!interview) {
     return null;
   }
-  const interviewerInfo =state.interviewers[interview.interviewer];
+
+  const interviewerInfo = state.interviewers[interview.interviewer];
   return {interviewer: interviewerInfo, student: interview.student};
 }
 
