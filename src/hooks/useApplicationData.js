@@ -20,8 +20,16 @@ const useApplicationData = () => {
     })
   }, []);
 
-
   const setDay = day => setState({ ...state, day });
+
+  const updateSpots = (id) => {
+    const foundDay = state.days.findIndex((element) => element.appointments.includes(id));
+    const updatedDay = {...state.days[foundDay]};
+    let updatedDays = [...state.days];
+    state.appointments[id].interview ? updatedDay.spots++  : updatedDay.spots--
+    updatedDays[foundDay] = updatedDay;
+    setState({...state, days: updatedDays});
+  };
 
   const bookInterview = (id, interview) => {
     const appointment = {
@@ -35,25 +43,28 @@ const useApplicationData = () => {
     };
     return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview})
       .then(() => {
-        setState({...state, appointments})
-        return axios.get('http://localhost:8001/api/days');
-      })
-      .then((response) => {
-        setState(prev => ({...prev, days:response.data}))
-      })
+        updateSpots(id);
+        setState(prev => ({...prev, appointments}))
+      });
   };
 
 
   const cancelInterview = (id) =>  {
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
     .then(() => {
-      return axios.get('http://localhost:8001/api/days');
-    })
-    .then((response) => {
-      setState(prev => ({...prev, days:response.data}))
-    })
-  };
+      const appointment = {
+        ...state.appointments[id],
+        interview: null
+      };
 
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment
+      };
+      updateSpots(id);
+      setState(prev => ({...prev, appointments}))
+    });
+  };
 
   return {state, setDay, bookInterview, cancelInterview};
 }
