@@ -31,4 +31,4 @@ const Show = (props) => {
   );
 }
 
-export default Show
+export default Show;

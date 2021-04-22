@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState} from 'react';
 
 const useVisualMode = (initial) => {
   const [mode, setMode] = useState(initial);
@@ -6,9 +6,8 @@ const useVisualMode = (initial) => {
 
   const transition = (second, replace = false) => {
     setMode(second);
-    // assuming we want to go straight to the initial state
     if (replace) { 
-      setHistory(prev => prev.slice(0, prev.length - 1))
+      setHistory(prev => prev.slice(0, prev.length - 1));
     }
     setHistory(prev => [...prev, second]);
   }
@@ -21,9 +20,7 @@ const useVisualMode = (initial) => {
       setMode(history[history.length - 2])
       setHistory(history.slice(0, history.length - 1));
     }
-
   }
-
   return { mode, history, transition, back };
 }
 

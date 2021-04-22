@@ -1,15 +1,15 @@
 import React from 'react';
-import './styles.scss'
+import './styles.scss';
 
-import Header from './Header'
-import Show from './Show'
-import Empty from './Empty'
-import Form from './Form'
-import Status from './Status'
-import Confirm from './Confirm'
-import Error from './Error'
+import Header from './Header';
+import Show from './Show';
+import Empty from './Empty';
+import Form from './Form';
+import Status from './Status';
+import Confirm from './Confirm';
+import Error from './Error';
 
-import useVisualMode from '../../hooks/useVisualMode'
+import useVisualMode from '../../hooks/useVisualMode';
 
 const Appointment = (props) => {
   const EMPTY = "EMPTY";
@@ -34,10 +34,10 @@ const Appointment = (props) => {
     transition(SAVING);
     props.bookInterview(props.id, interview)
     .then(() => {
-      transition(SHOW)
+      transition(SHOW);
     })
     .catch((error) => {
-      transition(ERROR_SAVE, true)
+      transition(ERROR_SAVE, true);
     })
   };
 
