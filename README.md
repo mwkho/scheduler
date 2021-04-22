@@ -8,9 +8,9 @@ https://github.com/mwkho/scheduler-api
 Development uses Storybook and the Webpack Development Server.
 All automated testing were done through Cypress and Jest.
 
-!["screenshot desc"](URL) 
-!["screenshot desc"](URL) 
-!["screenshot desc"](URL) 
+!["Initial load"](https://github.com/mwkho/scheduler/blob/master/docs/InitialLoad.png) 
+!["Confirming a delete and editing an interview"](https://github.com/mwkho/scheduler/blob/master/docs/ConfirmAndEdit.png) 
+!["Deleting an interview"](https://github.com/mwkho/scheduler/blob/master/docs/Delete-animation.png) 
 
 ## Getting Started
 1. Fork this repository, then clone your fork of this repository.
