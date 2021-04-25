@@ -31,6 +31,8 @@ const Appointment = (props) => {
       student: name, 
       interviewer: interviewer
     };
+
+    // show saving animation and transition to show when done
     transition(SAVING);
     props.bookInterview(props.id, interview)
     .then(() => {
@@ -42,6 +44,7 @@ const Appointment = (props) => {
   };
 
   const deleteInterview = () => {
+    // show deleting animation and transition to show when done replacing CONFIRM screen
     transition(DELETE, true);
     props.cancelInterview(props.id)
     .then(() => {transition(EMPTY)
